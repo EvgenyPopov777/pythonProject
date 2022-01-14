@@ -1,7 +1,9 @@
 import json
 import falcon
+import logging
 from waitress import serve
 from  falcon import App, Request, Response,HTTP_201, HTTP_400, HTTP_404
+logger = logging.getLogger(__name__)
 BOOKS ={
     1:"Thomas More.Utopia",
     2:"The Art of War",
@@ -34,6 +36,7 @@ class BooksListResourse:
         res.media =result
 class  BooksDetailsResourse:
     def on_get(self, req:Request, res:Response,book_id:str):
+        logger.info("process user request with books_id=%s", book_id)
         try:
             book_id = int(book_id)
             name = BOOKS[book_id]
@@ -46,13 +49,13 @@ class  BooksDetailsResourse:
         else:
             result ={"id":book_id,"name":name}
         res.text = json.dumps(result)
-books_list = BooksListResourse()
-books_details = BooksDetailsResourse()
-
-app = App()
-app.add_route("/books", books_list)
-app.add_route("/books/{book_id}",books_details)
-serve(app, host='127.0.0.1', port=8041)
+# books_list = BooksListResourse()
+# books_details = BooksDetailsResourse()
+#
+# app = App()
+# app.add_route("/books", books_list)
+# app.add_route("/books/{book_id}",books_details)
+# serve(app, host='127.0.0.1', port=8041)
 
 
 
