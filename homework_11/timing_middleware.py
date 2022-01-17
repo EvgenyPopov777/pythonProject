@@ -11,5 +11,5 @@ class TimingMiddleware:
         end_time = default_timer()
         total_time = end_time - req.context.start_time
         logger.info("request to %r with result status %s"
-                    "took %s. success: %s",
+                    "book %s. success: %s",
                     req.path, resp.status, total_time, req_succeeded)
