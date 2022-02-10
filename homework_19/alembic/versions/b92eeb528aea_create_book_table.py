@@ -1,8 +1,8 @@
-"""create books table
+"""create book table
 
-Revision ID: db29dd4e4859
-Revises: cc1a30a01e92
-Create Date: 2022-02-10 15:19:36.576834
+Revision ID: b92eeb528aea
+Revises: 076a36f1d4f5
+Create Date: 2022-02-10 21:24:03.976776
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'db29dd4e4859'
-down_revision = 'cc1a30a01e92'
+revision = 'b92eeb528aea'
+down_revision = '076a36f1d4f5'
 branch_labels = None
 depends_on = None
 
