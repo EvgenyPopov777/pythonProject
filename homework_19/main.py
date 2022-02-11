@@ -11,6 +11,7 @@ session_factory = sessionmaker(bind=engine)
 Session = scoped_session(session_factory)
 
 
+
 def create_author_and_posts(
         session:SessionType,
         *book_Name_books:str,
@@ -22,12 +23,14 @@ def create_author_and_posts(
     """""
     author = session.query(Author)
     for book_name in book_Name_books:
-        book = Book(title=book_name, author=author)
+        book = Book(Name_books=book_name, author=author)
         print("create book",book)
         session.add(book)
     session.commit()
     print("author's books", author.books)
     return author.books
+
+
 
 def main():
     """""
