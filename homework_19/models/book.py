@@ -2,8 +2,6 @@ from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from .base import Base
 class Book(Base):
-    # __tablename__ = "books"
-    # id = Column(Integer, primary_key=True)
     Name_books = Column(String(100), unique=True)
     author_id = Column(Integer, ForeignKey("blog_authors.id"), nullable=False)
 
