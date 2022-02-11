@@ -13,7 +13,7 @@ Session = scoped_session(session_factory)
 
 def create_author_and_posts(
         session:SessionType,
-        *Name_books:str,
+        *book_Name_books:str,
 )-> list[Book]:
     """""
     :param session:
@@ -21,8 +21,8 @@ def create_author_and_posts(
     :return:
     """""
     author = session.query(Author)
-    for Name_books in Name_books:
-        book = Book(author=author)
+    for book_name in book_Name_books:
+        book = Book(title=book_name, author=author)
         print("create book",book)
         session.add(book)
     session.commit()
