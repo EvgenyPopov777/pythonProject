@@ -6,12 +6,8 @@ sessionmaker,
 from models.author import Author
 from models.book import Book
 from models.base import engine
-
 session_factory = sessionmaker(bind=engine)
 Session = scoped_session(session_factory)
-
-
-
 def create_author(session: SessionType,Name_author:str)-> Author:
     """""
     :param session:
@@ -24,7 +20,6 @@ def create_author(session: SessionType,Name_author:str)-> Author:
     session.commit()
     print("saved author", author)
     return author
-
 def main():
     """""
     :return:
@@ -38,14 +33,14 @@ if __name__=='main':
 
 
 
-# def create_book(session: SessionType, Name_books:str)-> Book:
+# def create_book(session: SessionType, Name_books:str,author_id:int)-> Book:
 #     """""
 #     :param session:
 #     :param Name_books:
 #     :param author_id:
 #     :return:
 #     """""
-#     book = Book(Name_books=Name_books)
+#     book = Book(Name_books=Name_books,author_id=author_id)
 #     print("create book", book)
 #     session.add(book)
 #     session.commit()

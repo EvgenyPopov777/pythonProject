@@ -11,5 +11,5 @@ class Author(Base):
             f"Name_author={self.Name_author!r},"
         )
     def __repr__(self):
-        return  str(self)
+        return str(self)
 
