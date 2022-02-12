@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, Boolean
 from sqlalchemy.orm import relationship
 from .base import Base
 class Author(Base):
-    Name_author = Column(String(150), unique=True)
+    Name_author = Column(String(150), unique=False, nullable=False)
     books = relationship("Book", back_populates="author")
     def  __str__(self):
         return (
@@ -12,3 +12,4 @@ class Author(Base):
         )
     def __repr__(self):
         return  str(self)
+

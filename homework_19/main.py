@@ -1,58 +1,58 @@
-from  sqlalchemy.orm import (
-Session as SessionType,
-scoped_session,
-sessionmaker,
-)
-from models.author import Author
-from models.book import Book
-from models.base import engine
-
-session_factory = sessionmaker(bind=engine)
-Session = scoped_session(session_factory)
-
-
-
-def create_author_and_posts(
-        session:SessionType,
-        *book_Name_books:str,
-)-> list[Book]:
-    """""
-    :param session:
-    :param Name_books:
-    :return:
-    """""
-    author = session.query(Author)
-    for book_name in book_Name_books:
-        book = Book(Name_books=book_name, author=author)
-        print("create book",book)
-        session.add(book)
-    session.commit()
-    print("author's books", author.books)
-    return author.books
-
-
-
-def main():
-    """""
-        :return
-    """""
-    session:SessionType= Session()
-
-    create_author_and_posts(
-        session,
-        "Author number one",
-        "Thomas More.Utopia",
-        "The Art of War"
-    )
-    create_author_and_posts(
-        session,
-        "Author number two",
-        "What do women want"
-    )
-    session.close()
-
-if __name__=='main':
-    main()
+# from  sqlalchemy.orm import (
+# Session as SessionType,
+# scoped_session,
+# sessionmaker,
+# )
+# from models.author import Author
+# from models.book import Book
+# from models.base import engine
+#
+# session_factory = sessionmaker(bind=engine)
+# Session = scoped_session(session_factory)
+#
+#
+#
+# def create_author_and_posts(
+#         session:SessionType,
+#         *book_Name_books:str,
+# )-> list[Book]:
+#     """""
+#     :param session:
+#     :param Name_books:
+#     :return:
+#     """""
+#     author = session.query(Author)
+#     for book_name in book_Name_books:
+#         book = Book(Name_books=book_name, author=author)
+#         print("create book",book)
+#         session.add(book)
+#     session.commit()
+#     print("author's books", author.books)
+#     return author.books
+#
+#
+#
+# def main():
+#     """""
+#         :return
+#     """""
+#     session:SessionType= Session()
+#
+#     create_author_and_posts(
+#         session,
+#         "Author number one",
+#         "Thomas More.Utopia",
+#         "The Art of War"
+#     )
+#     create_author_and_posts(
+#         session,
+#         "Author number two",
+#         "What do women want"
+#     )
+#     session.close()
+#
+# if __name__=='main':
+#     main()
 
 
 
